@@ -11,6 +11,7 @@ async def download_site(session, url):
 
 async def download_all_sites(sites):
     async with aiohttp.ClientSession() as session:
+        session.headers["User-Agent"] = "SNU IDS Lab (http://ids.snu.ac.kr/)"
         tasks = []
         for url in sites:
             task = asyncio.ensure_future(download_site(session, url))
